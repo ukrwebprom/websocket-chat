@@ -1,0 +1,9 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 10px;
+}
+.header__contain {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=header.css.map */

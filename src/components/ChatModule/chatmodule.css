@@ -1,0 +1,20 @@
+.sender {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+
+.dialogue {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}/*# sourceMappingURL=chatmodule.css.map */

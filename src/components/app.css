@@ -1,0 +1,44 @@
+.centerpage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainpageblock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mainpageblock__content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media screen and (min-width: 480px) {
+  .mainpageblock {
+    flex-direction: row;
+    gap: 50px;
+  }
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: 200;
+}
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 65px;
+  }
+}
+
+p, ul {
+  font-size: 14px;
+}
+@media screen and (min-width: 480px) {
+  p, ul {
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=app.css.map */
