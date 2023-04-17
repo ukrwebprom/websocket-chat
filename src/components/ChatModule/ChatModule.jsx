@@ -55,7 +55,7 @@ export const ChatModule = ({ID}) => {
         sendMessage(JSON.stringify(data));
         }
         
-    }, [user]);
+    }, [user, ID]);
 
     useEffect(() => {
         if(lastMessage) {
