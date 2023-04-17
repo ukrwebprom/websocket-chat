@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import { useNavigate } from "react-router-dom";
 
 export const Mainpage = () => {
-  const { user, LogIn } = useUser();
+  const { user } = useUser();
   const navigate = useNavigate();
 
   const createChat = () => {

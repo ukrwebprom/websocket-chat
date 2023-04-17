@@ -1,6 +1,5 @@
 import { useUser } from 'firebase-func';
-import { useEffect, useState } from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
 import Menu from '@mui/material/Menu';

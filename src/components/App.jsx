@@ -1,6 +1,5 @@
 import { Mainpage } from "routes/Mainpage";
 import { Chat } from "routes/Chat";
-import { Header } from "./Header/Header";
 import './app.scss';
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "routes/Layout";

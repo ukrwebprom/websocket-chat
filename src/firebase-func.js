@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
           return () => unsubscribe;
       }
       
-    }, [uid])
+    }, [uid, user])
 
     const initUser = async ({uid, name, photo}) => {
       console.log('init user');
@@ -75,7 +75,7 @@ export const UserProvider = ({ children }) => {
 
     const LogIn = async () => {
         try {
-            const res = await signInWithPopup(auth, googleProvider);
+            await signInWithPopup(auth, googleProvider);
         } catch (err) {
             console.log(err);
         }

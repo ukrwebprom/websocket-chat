@@ -20,11 +20,11 @@ export const ChatModule = ({ID}) => {
     const { user } = useUser();
     const {
         sendMessage,
-        sendJsonMessage,
         lastMessage,
+/*         sendJsonMessage,
         lastJsonMessage,
         readyState,
-        getWebSocket,
+        getWebSocket, */
       } = useWebSocket(socketUrl, {
         onOpen: () => console.log('opened'),
         onClose: () => console.log('closed'),
