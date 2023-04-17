@@ -48,7 +48,7 @@ export const ChatModule = ({ID}) => {
             SendData('hello');
         }
         
-    }, [user]);
+    }, [user, SendData]);
 
     useEffect(() => {
         if(lastMessage) {
