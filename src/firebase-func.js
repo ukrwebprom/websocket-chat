@@ -45,21 +45,17 @@ export const UserProvider = ({ children }) => {
     }, [uid])
 
     const initUser = async ({uid, name, photo}) => {
-      console.log('init user');
       const docRef = doc(db, "users", uid);
       const userDB = await getDoc(docRef);
       if(!userDB.exists()) {
         await setDoc(docRef, {uid, name, photo});
-        console.log('init user - user added');
         setUID(uid);
       } else {
-        console.log('init user - user exists');
         setUID(uid);
       }
     }
     
     onAuthStateChanged(auth, (authUser) => {
-      console.log('user auth ', authUser );
         if (authUser !== null) {
           initUser({uid:authUser.uid, name:authUser.displayName, photo:authUser.photoURL});
         } else {
@@ -69,7 +65,6 @@ export const UserProvider = ({ children }) => {
 
     const LogOut = () => {
         signOut(auth);
-        console.log("signout")
       };
 
     const LogIn = async () => {
