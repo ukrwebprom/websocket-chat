@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
           return () => unsubscribe;
       }
       
-    }, [uid, user])
+    }, [uid])
 
     const initUser = async ({uid, name, photo}) => {
       console.log('init user');
