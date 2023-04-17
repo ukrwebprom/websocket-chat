@@ -1,6 +1,7 @@
 import { useUser } from 'firebase-func';
 import { useEffect, useState } from 'react';
-import { Button, Avatar } from '@mui/material';
+import { useRef } from 'react';
+import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,12 +11,23 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 import './header.scss';
 
 export const Header = () => {
-  const { user, LogIn, LogOut } = useUser();
+  const { user, LogIn, LogOut, UpdateChatName } = useUser();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [newChatName, setNewChatName] = useState('');
+  
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,7 +39,21 @@ export const Header = () => {
     setAnchorEl(null);
     LogOut();
   }
-  
+  const handleChatName = () => {
+    setAnchorEl(null);
+    setOpenDialog(true);
+  }
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+const handleSubmit = () => {
+  if(newChatName !== '') UpdateChatName(newChatName);
+  setOpenDialog(false);
+}
+
+const handleChangeChatName = e => {
+  setNewChatName(e.target.value);
+}
   return (
     <>
     <AppBar position="fixed" color="clear">
@@ -43,7 +69,7 @@ export const Header = () => {
       {user ? (
             <Tooltip title="Open settings">
             <IconButton onClick={handleClick} sx={{ p: 0 }}>
-              <Avatar alt={user.displayName} src={user.photoURL} />
+              <Avatar alt={user.name} src={user.photo} />
             </IconButton>
             </Tooltip>
           ) : (
@@ -67,31 +93,33 @@ export const Header = () => {
       'aria-labelledby': 'basic-button',
     }}
   >
-    <MenuItem onClick={handleClose}>Profile</MenuItem>
-    <MenuItem onClick={handleClose}>My account</MenuItem>
+    <MenuItem onClick={handleChatName}>Set chat name</MenuItem>
     <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
+    <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Set chat name</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To subscribe to this website, please enter your email address here. We
+            will send updates occasionally.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="New chat name"
+            type="text"
+            fullWidth
+            variant="standard"
+            value={newChatName}
+            onChange={handleChangeChatName}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
+        </DialogActions>
+      </Dialog>
     </>
-/*     <div className="header">
-      <Container maxWidth="xl">
-        <div className="header__contain">
-          <p>Logo</p>
-          {user ? (
-            <Avatar alt={user.displayName} src={user.photoURL} onClick={handleClick}>
-              {user.displayName[0]}
-            </Avatar>
-          ) : (
-            <Button
-              variant="outlined"
-              onClick={() => LogIn()}
-              sx={{ boxSizing: 'content-box', height: '34px' }}
-            >
-              Login
-            </Button>
-          )}
-        </div>
-        
-      </Container>
-    </div> */
   );
 };

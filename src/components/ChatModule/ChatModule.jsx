@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField';
 import { useState, useEffect } from 'react';
+import { useUser } from 'firebase-func';
 import useWebSocket from 'react-use-websocket';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -10,35 +11,13 @@ import Button from '@mui/material/Button';
 import './chatmodule.scss';
 
 export const ChatModule = ({ID}) => {
-    const testUsers = [
-        {uid:1, name:'Peter', photo: 'https://loremfaces.com/#gallery-1'},
-        {uid:12, name:'Duka', photo: 'https://loremfaces.com/#gallery-12'},
-        {uid:8, name:'Mrs. Julia Robertson', photo: 'https://loremfaces.com/#gallery-8'},
-        {uid:24, name:'Stive Jakkinson', photo: 'https://loremfaces.com/#gallery-24'},
-        {uid:19, name:'Jerome Jerome', photo: 'https://lh3.googleusercontent.com/a/AEdFTp7odHwYvndQ6lPH8OqizffBOTmJ2tdENMshJiUN4w=s96-c'},
-    ]
-    const testMessages = [
-        {uid:1, message:'Пахать еще и пахать'},
-        {uid:8, message:'Если я скажу ты скажешь, что не в своем уме'},
-        {uid:12, message:'https://www.instagram.com/reel/CrGY6FAAvwcSFGXsKfvP5JixmYK_WIVkikRQ2A0/?igshid=Mzc1MmZhNjY='},
-        {uid:24, message:'Ну я ж незламный. Меня больше тревожит уровень наеденности'},
-        {uid:8, message:'После твоей удачи страшно разболелась голова, больше так не делай. Посуду помыла, список написала, зубы почистила, легла'},
-        {uid:19, message:'Один чувак работал на 2х работах, в дневную и в ночную смену. А домашки делал с планшета, пока на травмае ехал на работу. Так что да, у тебя норм условия'},
-        {uid:1, message:'Какой смысл мне идти сецчас в кровать?'},
-        {uid:19, message:'Отдыхать'},
-        {uid:1, message:'Пахать еще и пахать'},
-        {uid:8, message:'Если я скажу ты скажешь, что не в своем уме'},
-        {uid:12, message:'https://www.instagram.com/reel/CrGY6FAAvwcSFGXsKfvP5JixmYK_WIVkikRQ2A0/?igshid=Mzc1MmZhNjY='},
-        {uid:24, message:'Ну я ж незламный. Меня больше тревожит уровень наеденности'},
-        {uid:8, message:'После твоей удачи страшно разболелась голова, больше так не делай. Посуду помыла, список написала, зубы почистила, легла'},
-        {uid:19, message:'Один чувак работал на 2х работах, в дневную и в ночную смену. А домашки делал с планшета, пока на травмае ехал на работу. Так что да, у тебя норм условия'},
-        {uid:1, message:'Какой смысл мне идти сецчас в кровать?'},
-        {uid:19, message:'Отдыхать'},
-    ]
+
     const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState('');
     const [users, setUsers] = useState([]);
     const socketUrl = 'ws://tranquil-reaches-58824.herokuapp.com/';
-
+    //const socketUrl = 'ws://localhost:8080';
+    const { user } = useUser();
     const {
         sendMessage,
         sendJsonMessage,
@@ -53,17 +32,52 @@ export const ChatModule = ({ID}) => {
       });
 
     useEffect(() => {
-        setUsers(testUsers);
-        setMessages(testMessages);
-        sendMessage('Hello');
-    }, []);
+        if(user) {
+        setUsers(u => {
+            return [
+                ...u,
+                {
+                    uid:user.uid, 
+                    photo:user.photo, 
+                    name: user.name
+                }
+            ]
+            
+
+        });
+            SendData('hello');
+        }
+        
+    }, [user]);
 
     useEffect(() => {
-        if(lastMessage) console.log(lastMessage.data);
+        if(lastMessage) {
+            const data = JSON.parse(lastMessage.data);
+            setMessages(m => {
+                return [...m, {uid:data.uid, message:data.message}]
+            })
+        }
+        
     }, [lastMessage])
-
+    const SendData = (message) => {
+        const data = {
+            message,
+            ID,
+            uid: user.uid,
+            photo: user.photo,
+            name: user.name,
+        };
+        sendMessage(JSON.stringify(data));
+    }
     const getUser = (uid) => {
-        return testUsers.find(user => user.uid === uid);
+        return users.find(user => user.uid === uid);
+    }
+    const handleType = e => {
+        setNewMessage(e.target.value);
+    }
+    const handleOnSend = () => {
+        SendData(newMessage);
+        setNewMessage('');
     }
 
     return (
@@ -93,9 +107,11 @@ export const ChatModule = ({ID}) => {
           multiline
           maxRows={4}
           fullWidth
+          value={newMessage}
+          onChange = {handleType}
           //defaultValue="Default Value"
         />
-        <Button variant="contained" sx={{height:'35px'}}>Send</Button>
+        <Button variant="contained" sx={{height:'35px'}} onClick={handleOnSend}>Send</Button>
         </div>
         
         </>
