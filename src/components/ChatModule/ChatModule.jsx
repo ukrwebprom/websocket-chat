@@ -15,7 +15,7 @@ export const ChatModule = ({ID}) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [users, setUsers] = useState([]);
-    const socketUrl = 'ws://tranquil-reaches-58824.herokuapp.com/';
+    const socketUrl = 'wss://tranquil-reaches-58824.herokuapp.com/';
     //const socketUrl = 'ws://localhost:8080';
     const { user } = useUser();
     const {
