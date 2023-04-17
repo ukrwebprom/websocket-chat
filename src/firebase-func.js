@@ -28,6 +28,7 @@ export const UserProvider = ({ children }) => {
     const [uid, setUID] = useState(null);
 
     useEffect(() => {
+      console.log('uid ', uid)
       const updState = (userData) => {
         setUser({name:userData.name, photo:userData.photo, uid:userData.uid});
       }
@@ -56,10 +57,11 @@ export const UserProvider = ({ children }) => {
     }
     
     onAuthStateChanged(auth, (authUser) => {
-        if (authUser !== null) {
+          if (authUser !== null) {
           initUser({uid:authUser.uid, name:authUser.displayName, photo:authUser.photoURL});
         } else {
           setUser(null);
+          setUID(null);
         }
       });
 
