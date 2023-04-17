@@ -45,10 +45,17 @@ export const ChatModule = ({ID}) => {
             
 
         });
-            SendData('hello');
+            const data = {
+            message:'',
+            ID,
+            uid: user.uid,
+            photo: user.photo,
+            name: user.name,
+        };
+        sendMessage(JSON.stringify(data));
         }
         
-    }, [user, SendData]);
+    }, [user]);
 
     useEffect(() => {
         if(lastMessage) {
