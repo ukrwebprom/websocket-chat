@@ -14,7 +14,7 @@ import { lightTheme } from 'Theme';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <UserProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='/websocket-chat'>
       <ThemeProvider theme={lightTheme}>
         <App />
       </ThemeProvider>
