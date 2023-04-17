@@ -28,21 +28,20 @@ export const UserProvider = ({ children }) => {
     const [uid, setUID] = useState(null);
 
     useEffect(() => {
+      const updState = (userData) => {
+        setUser({name:userData.name, photo:userData.photo, uid:userData.uid});
+      }
       if(uid !== null) {
-        console.log('set snapshot');
         const docRef = doc(db, "users", uid);
         const unsubscribe = onSnapshot(docRef, (doc) => {
           const userData = doc.data();
-          
-          console.log("user data", userData);
-          setUser({name:userData.name, photo:userData.photo, uid:userData.uid});
-          console.log("user in store", user);
+          updState(userData);
         },
           (error) => console.log('error')
           );
           return () => unsubscribe;
       }
-      
+
     }, [uid])
 
     const initUser = async ({uid, name, photo}) => {
