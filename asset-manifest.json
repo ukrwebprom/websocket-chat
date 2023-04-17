@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.9be0a05d.css",
-    "main.js": "/react-homework-template/static/js/main.14338bf9.js",
+    "main.css": "/react-homework-template/static/css/main.a66aa4d0.css",
+    "main.js": "/react-homework-template/static/js/main.30d0617a.js",
     "static/media/main-img.svg": "/react-homework-template/static/media/main-img.1be58265a30a9e352107c946993979a9.svg",
     "static/media/roboto-all-500-normal.woff": "/react-homework-template/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/react-homework-template/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
@@ -36,11 +36,11 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/react-homework-template/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/react-homework-template/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/react-homework-template/index.html",
-    "main.9be0a05d.css.map": "/react-homework-template/static/css/main.9be0a05d.css.map",
-    "main.14338bf9.js.map": "/react-homework-template/static/js/main.14338bf9.js.map"
+    "main.a66aa4d0.css.map": "/react-homework-template/static/css/main.a66aa4d0.css.map",
+    "main.30d0617a.js.map": "/react-homework-template/static/js/main.30d0617a.js.map"
   },
   "entrypoints": [
-    "static/css/main.9be0a05d.css",
-    "static/js/main.14338bf9.js"
+    "static/css/main.a66aa4d0.css",
+    "static/js/main.30d0617a.js"
   ]
 }
