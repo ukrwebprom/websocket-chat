@@ -24,10 +24,17 @@ export const ChatModule = ({ ID }) => {
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
 
+  useEffect(() => {
+
+  }, [])
+
+  if(user !== null) {
+    
+  }
   const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
-    shouldReconnect: closeEvent => true,
+    //shouldReconnect: closeEvent => true,
     queryParams: {
       chatID: ID,
       userID: user.userID,
