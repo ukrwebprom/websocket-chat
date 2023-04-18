@@ -11,12 +11,10 @@ export const App = () => {
 /*   const { user } = useUser(); */
   return (
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Mainpage />} />
+        <Route path="/" element={<Mainpage />} />
           <Route path="/:chatID" element={<Chat />} />
 {/*           {user? <Route path=":chatID" element={<Chat />} /> :
           <Route path=":chatID" element={<Mainpage />} />} */}
-        </Route>
         
       </Routes>
   );
