@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useUser } from 'firebase-func';
-import useWebSocket from 'react-use-websocket';
+/* import useWebSocket from 'react-use-websocket'; */
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -19,7 +19,7 @@ export const ChatModule = ({ ID }) => {
   const [connectedSnack, setConnectedSnack] = useState(false);
   const [disconnectedSnack, setDisconnectedSnack] = useState(false);
   const paper = useRef(null);
-  const socketUrl = 'wss://tranquil-reaches-58824.herokuapp.com/';
+/*   const socketUrl = 'wss://tranquil-reaches-58824.herokuapp.com/'; */
 
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
@@ -43,7 +43,7 @@ export const ChatModule = ({ ID }) => {
     }
   }); */
 
-  console.log(lastMessage);
+/*   console.log(lastMessage); */
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
