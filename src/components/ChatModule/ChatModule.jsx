@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useUser } from 'firebase-func';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
+import useWebSocket from 'react-use-websocket';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -59,7 +59,10 @@ export const ChatModule = ({ ID }) => {
     if (readyState === 1) Handshake();
   }, [readyState]); */
 
-
+  const getUser = uid => {
+    return users.find(user => user.userID === uid);
+  };
+  
   useEffect(() => {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data);
@@ -95,9 +98,7 @@ export const ChatModule = ({ ID }) => {
     sendMessage(JSON.stringify(data));
   };
 
-  const getUser = uid => {
-    return users.find(user => user.userID === uid);
-  };
+
   const handleType = e => {
     setNewMessage(e.target.value);
   };
