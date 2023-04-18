@@ -12,7 +12,7 @@ export const App = () => {
   return (
       <Routes>
         <Route path="/" element={<Mainpage />} />
-          <Route path="/chat/:chatID" element={<Chat />} />
+          <Route path="/:chatID" element={<Chat />} />
 {/*           {user? <Route path=":chatID" element={<Chat />} /> :
           <Route path="/chat/:chatID" element={<Mainpage />} />} */}
         
