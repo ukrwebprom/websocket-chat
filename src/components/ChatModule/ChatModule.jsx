@@ -11,8 +11,11 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import './chatmodule.scss';
+import { useParams } from "react-router-dom";
 
 export const ChatModule = ({ ID }) => {
+  const { chatID } = useParams();
+  console.log(chatID);
   const [messages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [users] = useState([]);
