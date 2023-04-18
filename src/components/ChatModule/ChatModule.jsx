@@ -107,7 +107,7 @@ export const ChatModule = ({ ID }) => {
       chatID: ID,
       userID: user.userID,
     };
-    sendMessage(JSON.stringify(data));
+/*     sendMessage(JSON.stringify(data)); */
   };
 
 
