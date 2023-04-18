@@ -59,10 +59,10 @@ export const ChatModule = ({ ID }) => {
     if (readyState === 1) Handshake();
   }, [readyState]); */
 
-  const getUser = uid => {
+/*   const getUser = uid => {
     return users.find(user => user.userID === uid);
   };
-  
+ */
   useEffect(() => {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data);
@@ -77,13 +77,14 @@ export const ChatModule = ({ ID }) => {
         console.log(data.users);
         return;
       }
+      const sender = users.find(user => user.userID === data.userID);
       setMessages(m => {
-        return [...m, { userID: data.userID, message: data.message, messID: data.messID, name:getUser(data.userID).name, photo:getUser(data.userID).photo }];
+        return [...m, { userID: data.userID, message: data.message, messID: data.messID, name:sender.name, photo:sender.photo }];
       });
       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current);
     }
-  }, [lastMessage, getUser]);
+  }, [lastMessage]);
 
   useEffect(() => {
     setUsersInChat(users.length);
