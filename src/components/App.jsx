@@ -13,8 +13,9 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Mainpage />} />
-          {user? <Route path=":chatID" element={<Chat />} /> :
-          <Route path=":chatID" element={<Mainpage />} />}
+          <Route path=":chatID" element={<Chat />} />
+{/*           {user? <Route path=":chatID" element={<Chat />} /> :
+          <Route path=":chatID" element={<Mainpage />} />} */}
         </Route>
         
       </Routes>
