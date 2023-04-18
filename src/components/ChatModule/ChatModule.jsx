@@ -16,7 +16,6 @@ export const ChatModule = ({ ID }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [users, setUsers] = useState([]);
-  const [connected, setConnected] = useState(false);
   const [connectedSnack, setConnectedSnack] = useState(false);
   const [disconnectedSnack, setDisconnectedSnack] = useState(false);
   const paper = useRef(null);
@@ -25,7 +24,7 @@ export const ChatModule = ({ ID }) => {
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
 
-  const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
+  const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
     shouldReconnect: closeEvent => true,
@@ -37,13 +36,13 @@ export const ChatModule = ({ ID }) => {
     }
   });
 
-  const connectionStatus = {
+/*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
     [ReadyState.OPEN]: 'Open',
     [ReadyState.CLOSING]: 'Closing',
     [ReadyState.CLOSED]: 'Closed',
     [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
-  }[readyState];
+  }[readyState]; */
 
 /*   const Handshake = () => {
     const data = {
@@ -81,11 +80,11 @@ export const ChatModule = ({ ID }) => {
       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current);
     }
-  }, [lastMessage]);
+  }, [lastMessage, getUser]);
 
   useEffect(() => {
     setUsersInChat(users.length);
-  }, [users])
+  }, [users, setUsersInChat])
 
   const SendData = message => {
     const data = {
