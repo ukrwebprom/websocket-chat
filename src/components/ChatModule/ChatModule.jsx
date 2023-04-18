@@ -36,7 +36,7 @@ export const ChatModule = ({ ID }) => {
     }
   });
 
-  console.log(lastJsonMessage?.data);
+  console.log(lastJsonMessage);
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
