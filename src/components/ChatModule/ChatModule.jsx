@@ -101,21 +101,21 @@ export const ChatModule = ({ ID }) => {
     setUsersInChat(users.length);
   }, [users, setUsersInChat])
 
-  const SendData = message => {
+/*   const SendData = message => {
     const data = {
       message,
       chatID: ID,
       userID: user.userID,
     };
-/*     sendMessage(JSON.stringify(data)); */
-  };
+    sendMessage(JSON.stringify(data));
+  }; */
 
 
   const handleType = e => {
     setNewMessage(e.target.value);
   };
   const handleOnSend = () => {
-    SendData(newMessage);
+/*     SendData(newMessage); */
     setNewMessage('');
   };
 
