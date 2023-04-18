@@ -13,7 +13,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<Mainpage />} />
-          <Route path="/:chatID" element={<Chat />} />
+          <Route path=":chatID" element={<Chat />} />
         </Route>
 {/*           {user? <Route path=":chatID" element={<Chat />} /> :
           <Route path="/chat/:chatID" element={<Mainpage />} />} */}
