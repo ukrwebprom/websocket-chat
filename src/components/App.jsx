@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "routes/Layout";
+/* import { Layout } from "routes/Layout"; */
 import { Mainpage } from "routes/Mainpage";
 import { Chat } from "routes/Chat";
 /* import { useUser } from 'firebase-func'; */
