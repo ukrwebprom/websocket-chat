@@ -63,7 +63,7 @@ export const ChatModule = ({ ID }) => {
     return users.find(user => user.userID === uid);
   };
  */
-  useEffect(() => {
+/*   useEffect(() => {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data);
       if(data.message === 'ping') {
@@ -84,7 +84,11 @@ export const ChatModule = ({ ID }) => {
       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current);
     }
-  }, [lastMessage, users]);
+  }, [lastMessage, users]); */
+
+  useEffect(() => {
+    console.log(lastMessage);
+  }, [lastMessage])
 
   useEffect(() => {
     setUsersInChat(users.length);
