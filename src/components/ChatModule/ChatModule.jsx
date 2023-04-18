@@ -24,7 +24,7 @@ export const ChatModule = ({ ID }) => {
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
 
-  const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
+  const { sendMessage, lastJsonMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
     shouldReconnect: closeEvent => true,
@@ -35,6 +35,8 @@ export const ChatModule = ({ ID }) => {
       name: user.name,
     }
   });
+
+  if(lastJsonMessage?.data.message === 'ping') console.log('ping');
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
@@ -86,9 +88,7 @@ export const ChatModule = ({ ID }) => {
     }
   }, [lastMessage, users]); */
 
-  useEffect(() => {
-    console.log(lastMessage);
-  }, [lastMessage])
+
 
   useEffect(() => {
     setUsersInChat(users.length);
