@@ -36,7 +36,7 @@ export const ChatModule = ({ ID }) => {
     }
   });
 
-  if(lastJsonMessage?.data?.message === 'ping') console.log('ping');
+  console.log(lastJsonMessage?.data);
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
