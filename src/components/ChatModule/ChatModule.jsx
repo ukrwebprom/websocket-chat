@@ -20,7 +20,7 @@ export const ChatModule = ({ ID }) => {
   const [connectedSnack, setConnectedSnack] = useState(false);
   const [disconnectedSnack, setDisconnectedSnack] = useState(false);
   const paper = useRef(null);
-  const socketUrl = 'ws://tranquil-reaches-58824.herokuapp.com/';
+  const socketUrl = 'wss://tranquil-reaches-58824.herokuapp.com/';
 
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
