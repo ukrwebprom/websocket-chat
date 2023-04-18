@@ -84,7 +84,7 @@ export const ChatModule = ({ ID }) => {
       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current);
     }
-  }, [lastMessage]);
+  }, [lastMessage, users]);
 
   useEffect(() => {
     setUsersInChat(users.length);
