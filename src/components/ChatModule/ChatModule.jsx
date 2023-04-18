@@ -24,7 +24,7 @@ export const ChatModule = ({ ID }) => {
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
 
-  const { sendMessage, lastJsonMessage } = useWebSocket(socketUrl, {
+  const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
     shouldReconnect: closeEvent => true,
@@ -36,7 +36,7 @@ export const ChatModule = ({ ID }) => {
     }
   });
 
-  console.log(lastJsonMessage);
+  console.log(lastMessage);
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
