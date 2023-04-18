@@ -6,4 +6,10 @@
 .header__contain {
   display: flex;
   justify-content: space-between;
+}
+
+.userdata {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
 }/*# sourceMappingURL=header.css.map */

@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChanged} from "firebase/auth";
 import {doc, getDoc, setDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import { nanoid } from 'nanoid'
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1EGilUU6bDwumGUhmYjBDkLtPpJeH7kg",
@@ -26,11 +27,12 @@ export const useUser = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [uid, setUID] = useState(null);
+    const [usersInChat, setUsersInChat] = useState(0);
 
     useEffect(() => {
       console.log('uid ', uid)
       const updState = (userData) => {
-        setUser({name:userData.name, photo:userData.photo, uid:userData.uid});
+        setUser({name:userData.name, photo:userData.photo, uid:userData.uid, userID:nanoid()});
       }
       if(uid !== null) {
         const docRef = doc(db, "users", uid);
@@ -84,7 +86,7 @@ export const UserProvider = ({ children }) => {
     }
     return (
         <UserContext.Provider
-          value={{ user, LogIn, LogOut, UpdateChatName }}>
+          value={{ user, LogIn, LogOut, UpdateChatName, usersInChat, setUsersInChat }}>
           {children}
         </UserContext.Provider>
     );

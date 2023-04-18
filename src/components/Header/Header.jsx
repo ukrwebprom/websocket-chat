@@ -17,11 +17,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Badge from '@mui/material/Badge';
+import PersonIcon from '@mui/icons-material/Person';
 
 import './header.scss';
 
 export const Header = () => {
-  const { user, LogIn, LogOut, UpdateChatName } = useUser();
+  const { user, LogIn, LogOut, UpdateChatName, usersInChat } = useUser();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -58,19 +60,27 @@ const handleChangeChatName = e => {
     <AppBar position="fixed" color="clear">
       <Container maxWidth="xl">
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
+      <div className="userdata">
       <Typography
             variant="h6"
             noWrap
             component="a"
             href="/">the Chat</Typography>
+      <Badge badgeContent={usersInChat} color="primary">
+        <PersonIcon color="action" />
+      </Badge>
+      </div>
 
 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}></Box>
       {user ? (
+            
+
             <Tooltip title="Open settings">
             <IconButton onClick={handleClick} sx={{ p: 0 }}>
               <Avatar alt={user.name} src={user.photo} />
             </IconButton>
             </Tooltip>
+            
           ) : (
             <Button
               variant="outlined"
