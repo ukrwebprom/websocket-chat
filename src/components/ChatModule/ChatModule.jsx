@@ -31,7 +31,7 @@ export const ChatModule = ({ ID }) => {
   if(user !== null) {
     
   }
-  const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
+/*   const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
     //shouldReconnect: closeEvent => true,
@@ -41,7 +41,7 @@ export const ChatModule = ({ ID }) => {
       photo: user.photo,
       name: user.name,
     }
-  });
+  }); */
 
   console.log(lastMessage);
 
