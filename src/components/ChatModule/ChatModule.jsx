@@ -13,9 +13,9 @@ import Alert from '@mui/material/Alert';
 import './chatmodule.scss';
 
 export const ChatModule = ({ ID }) => {
-  const [messages, setMessages] = useState([]);
+  const [messages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const [users, setUsers] = useState([]);
+  const [users] = useState([]);
   const [connectedSnack, setConnectedSnack] = useState(false);
   const [disconnectedSnack, setDisconnectedSnack] = useState(false);
   const paper = useRef(null);
