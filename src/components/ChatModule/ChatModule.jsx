@@ -43,10 +43,10 @@ export const ChatModule = ({ ID }) => {
   //const receivedData = lastJsonMessage?.data.userActivity || {};
 
   const receivedData = useMemo(
-    () => lastJsonMessage?.data.userActivity || {},
+    () => lastJsonMessage?.data || {},
     [lastJsonMessage]
   );
-  
+
   useEffect(() => {
     console.log(receivedData);
   }, [receivedData])
