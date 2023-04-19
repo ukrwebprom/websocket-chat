@@ -15,7 +15,6 @@ import { useParams } from "react-router-dom";
 
 export const ChatModule = ({ ID }) => {
   const { chatID } = useParams();
-  console.log(chatID);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [users, setUsers] = useState([]);
@@ -31,12 +30,13 @@ export const ChatModule = ({ ID }) => {
   const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
-    //shouldReconnect: closeEvent => true,
+    shouldReconnect: closeEvent => true,
     filter: (message) => {
-      return typeof message.data === "object";
+      console.log(message);
+      return typeof JSON.parse(message.data) === "object";
     },
     queryParams: {
-      chatID: ID,
+      chatID: chatID,
       userID: user.userID,
       photo: user.photo,
       name: user.name,
