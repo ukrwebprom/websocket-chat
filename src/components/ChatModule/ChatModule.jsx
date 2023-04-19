@@ -81,6 +81,9 @@ export const ChatModule = ({ ID }) => {
     return users.find(user => user.userID === uid);
   };
  */
+  const updUsersList = (users) => {
+    setUsers(users);
+  }
   useEffect(() => {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data);
@@ -89,9 +92,7 @@ export const ChatModule = ({ ID }) => {
         return;
       }
       if(data.message === 'lm319') {
-         setUsers(
-          data.users
-          );
+        updUsersList(data.users); 
         console.log(data.users);
         return;
       }
@@ -102,7 +103,7 @@ export const ChatModule = ({ ID }) => {
       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current);
     }
-  }, [lastMessage, users]);
+  }, [lastMessage, updUsersList]);
 
 
 
