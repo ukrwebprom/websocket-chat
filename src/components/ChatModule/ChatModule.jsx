@@ -33,7 +33,7 @@ export const ChatModule = ({ ID }) => {
     onClose: () => setDisconnectedSnack(true),
     //shouldReconnect: closeEvent => true,
     filter: (message) => {
-      return typeof message.data.message != "undefined";
+      return typeof message.data === "object";
     },
     queryParams: {
       chatID: ID,
