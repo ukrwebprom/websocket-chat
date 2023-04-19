@@ -16,9 +16,9 @@ import { useParams } from "react-router-dom";
 export const ChatModule = ({ ID }) => {
   const { chatID } = useParams();
   console.log(chatID);
-  const [messages] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const [users] = useState([]);
+  const [users, setUsers] = useState([]);
   const [connectedSnack, setConnectedSnack] = useState(false);
   const [disconnectedSnack, setDisconnectedSnack] = useState(false);
   const paper = useRef(null);
@@ -46,7 +46,6 @@ export const ChatModule = ({ ID }) => {
     }
   });
 
-  if(lastMessage.data) console.log(lastMessage.data);
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
@@ -75,7 +74,7 @@ export const ChatModule = ({ ID }) => {
     return users.find(user => user.userID === uid);
   };
  */
-/*   useEffect(() => {
+  useEffect(() => {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data);
       if(data.message === 'ping') {
@@ -96,7 +95,7 @@ export const ChatModule = ({ ID }) => {
       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current);
     }
-  }, [lastMessage, users]); */
+  }, [lastMessage, users]);
 
 
 
