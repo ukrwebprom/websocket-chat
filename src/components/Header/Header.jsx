@@ -2,13 +2,13 @@ import { useUser } from 'firebase-func';
 import { useState } from 'react';
 import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -61,11 +61,7 @@ const handleChangeChatName = e => {
       <Container maxWidth="xl">
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
       <div className="userdata">
-      <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/">the Chat</Typography>
+      <Link to="/">the Chat</Link>
       <Badge badgeContent={usersInChat} color="primary">
         <PersonIcon color="action" />
       </Badge>
