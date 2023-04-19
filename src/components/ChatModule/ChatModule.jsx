@@ -32,6 +32,10 @@ export const ChatModule = ({ ID }) => {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
     //shouldReconnect: closeEvent => true,
+    filter: (message) => {
+      console.log("m:", message);
+      return true;
+    },
     queryParams: {
       chatID: ID,
       userID: user.userID,
