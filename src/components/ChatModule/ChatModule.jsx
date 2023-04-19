@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useUser } from 'firebase-func';
-/* import useWebSocket from 'react-use-websocket'; */
+import useWebSocket from 'react-use-websocket';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -22,7 +22,7 @@ export const ChatModule = ({ ID }) => {
   const [connectedSnack, setConnectedSnack] = useState(false);
   const [disconnectedSnack, setDisconnectedSnack] = useState(false);
   const paper = useRef(null);
-/*   const socketUrl = 'wss://tranquil-reaches-58824.herokuapp.com/'; */
+  const socketUrl = 'wss://tranquil-reaches-58824.herokuapp.com/';
 
   //const socketUrl = 'ws://localhost:8080';
   const { user, setUsersInChat } = useUser();
@@ -34,7 +34,7 @@ export const ChatModule = ({ ID }) => {
   if(user !== null) {
     
   }
-/*   const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
+  const { sendMessage, lastMessage } = useWebSocket(socketUrl, {
     onOpen: () => setConnectedSnack(true),
     onClose: () => setDisconnectedSnack(true),
     //shouldReconnect: closeEvent => true,
@@ -44,9 +44,9 @@ export const ChatModule = ({ ID }) => {
       photo: user.photo,
       name: user.name,
     }
-  }); */
+  });
 
-/*   console.log(lastMessage); */
+  console.log(lastMessage);
 
 /*   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
@@ -104,21 +104,21 @@ export const ChatModule = ({ ID }) => {
     setUsersInChat(users.length);
   }, [users, setUsersInChat])
 
-/*   const SendData = message => {
+  const SendData = message => {
     const data = {
       message,
       chatID: ID,
       userID: user.userID,
     };
     sendMessage(JSON.stringify(data));
-  }; */
+  };
 
 
   const handleType = e => {
     setNewMessage(e.target.value);
   };
   const handleOnSend = () => {
-/*     SendData(newMessage); */
+    SendData(newMessage);
     setNewMessage('');
   };
 
