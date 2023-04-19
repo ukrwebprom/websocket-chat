@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useUser } from 'firebase-func';
 import useWebSocket from 'react-use-websocket';
 import TextField from '@mui/material/TextField';
@@ -40,7 +40,13 @@ export const ChatModule = ({ ID }) => {
     }
   });
 
-  const receivedData = lastJsonMessage?.data.userActivity || {};
+  //const receivedData = lastJsonMessage?.data.userActivity || {};
+
+  const receivedData = useMemo(
+    () => lastJsonMessage?.data.userActivity || {},
+    [lastJsonMessage]
+  );
+  
   useEffect(() => {
     console.log(receivedData);
   }, [receivedData])
