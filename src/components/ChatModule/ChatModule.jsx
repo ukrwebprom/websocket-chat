@@ -101,7 +101,7 @@ export const ChatModule = ({ ID }) => {
         return;
       }
       if(data.message === 'lm319') {
-        updUsersList(data.users); 
+        //updUsersList(data.users); 
         console.log(data.users);
         return;
       }
@@ -109,7 +109,7 @@ export const ChatModule = ({ ID }) => {
 /*       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current); */
     }
-  }, [lastMessage, updMessagesList, updUsersList]);
+  }, [lastMessage, updMessagesList]);
 
 
 
