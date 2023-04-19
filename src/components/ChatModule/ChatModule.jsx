@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useUser } from 'firebase-func';
 import useWebSocket from 'react-use-websocket';
 import TextField from '@mui/material/TextField';
@@ -85,12 +85,19 @@ export const ChatModule = ({ ID }) => {
     setUsers(u);
   }
   
-  const updMessagesList = (data) => {
+/*   const updMessagesList = (data) => {
     const sender = users.find(user => user.userID === data.userID);
     setMessages(m => {
       return [...m, { userID: data.userID, message: data.message, messID: data.messID, name:sender.name, photo:sender.photo }];
     });
-  }
+  } */
+  const updMessagesList = useCallback((data) => {
+    const sender = users.find(user => user.userID === data.userID);
+    setMessages(m => {
+      return [...m, { userID: data.userID, message: data.message, messID: data.messID, name:sender.name, photo:sender.photo }];
+    });
+  }, [users]);
+  
   useEffect(() => {
  
     if (lastMessage !== null) {
