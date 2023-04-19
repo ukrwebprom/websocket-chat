@@ -33,7 +33,7 @@ export const ChatModule = ({ ID }) => {
     onClose: () => setDisconnectedSnack(true),
     //shouldReconnect: closeEvent => true,
     filter: (message) => {
-      return message.data.message === 'ping';
+      return typeof message.data != "undefined";
     },
     queryParams: {
       chatID: ID,
