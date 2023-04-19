@@ -15,7 +15,7 @@ import { lightTheme } from 'Theme';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <UserProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={lightTheme}>
         <App />
       </ThemeProvider>
