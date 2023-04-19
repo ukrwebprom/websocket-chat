@@ -81,23 +81,17 @@ export const ChatModule = ({ ID }) => {
     return users.find(user => user.userID === uid);
   };
  */
-  const updUsersList = (u) => {
+  const updUsersList = useCallback((u) => {
     setUsers(u);
-  }
+  }, [users]);
   
-/*   const updMessagesList = (data) => {
-    const sender = users.find(user => user.userID === data.userID);
-    setMessages(m => {
-      return [...m, { userID: data.userID, message: data.message, messID: data.messID, name:sender.name, photo:sender.photo }];
-    });
-  } */
   const updMessagesList = useCallback((data) => {
     const sender = users.find(user => user.userID === data.userID);
     setMessages(m => {
       return [...m, { userID: data.userID, message: data.message, messID: data.messID, name:sender.name, photo:sender.photo }];
     });
   }, [users]);
-  
+
   useEffect(() => {
  
     if (lastMessage !== null) {
