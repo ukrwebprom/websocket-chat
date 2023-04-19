@@ -83,7 +83,7 @@ export const ChatModule = ({ ID }) => {
  */
   const updUsersList = useCallback((u) => {
     setUsers(u);
-  }, [users]);
+  }, []);
   
   const updMessagesList = useCallback((data) => {
     const sender = users.find(user => user.userID === data.userID);
@@ -109,7 +109,7 @@ export const ChatModule = ({ ID }) => {
 /*       paper.current.scrollTo(0, paper.current.scrollHeight);
       console.log(paper.current); */
     }
-  }, [lastMessage, updMessagesList]);
+  }, [lastMessage, updMessagesList, updUsersList]);
 
 
 
