@@ -83,8 +83,8 @@ export const ChatModule = ({ ID }) => {
  */
   
   useEffect(() => {
-    const updUsersList = (users) => {
-      setUsers(users);
+    const updUsersList = (u) => {
+      setUsers(u);
     }
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data);
