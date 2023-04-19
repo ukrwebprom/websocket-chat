@@ -81,9 +81,9 @@ export const ChatModule = ({ ID }) => {
     return users.find(user => user.userID === uid);
   };
  */
-  const updUsersList = useCallback((u) => {
+/*   const updUsersList = useCallback((u) => {
     setUsers(u);
-  }, []);
+  }, []); */
   
   const updMessagesList = useCallback((data) => {
     const sender = users.find(user => user.userID === data.userID);
