@@ -62,9 +62,9 @@ const handleChangeChatName = e => {
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
       <div className="userdata">
       <Link to="/">the Chat</Link>
-      <Badge badgeContent={usersInChat} color="primary">
+      {usersInChat > 0 && <Badge badgeContent={usersInChat} color="primary">
         <PersonIcon color="action" />
-      </Badge>
+      </Badge>}
       </div>
 
 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}></Box>
