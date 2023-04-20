@@ -62,7 +62,7 @@ const handleChangeChatName = e => {
       <Container maxWidth="xl">
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
       <div className="userdata">
-      <Link to="/"><img src={Logo} width="50px"/></Link>
+      <Link to="/"><img src={Logo} width="50px" alt="the chat logo"/></Link>
       {usersInChat > 0 && <Badge badgeContent={usersInChat} color="primary">
         <PersonIcon color="action" />
       </Badge>}
