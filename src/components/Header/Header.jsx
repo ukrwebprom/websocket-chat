@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Logo from '../../imgs/logo.png'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AppBar from '@mui/material/AppBar';
@@ -61,7 +62,7 @@ const handleChangeChatName = e => {
       <Container maxWidth="xl">
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
       <div className="userdata">
-      <Link to="/">the Chat</Link>
+      <Link to="/"><img src={Logo} width="50px"/></Link>
       {usersInChat > 0 && <Badge badgeContent={usersInChat} color="primary">
         <PersonIcon color="action" />
       </Badge>}
