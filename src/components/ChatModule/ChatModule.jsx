@@ -14,8 +14,13 @@ export const ChatModule = ({ client }) => {
   const { user, setUsersInChat } = useUser();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  //const [users, setUsers] = useState([]);
+  const [chatUsers, setChatUsers] = useState([]);
   const users = useRef([])
+
+  useEffect(() => {
+    console.log(chatUsers);
+    setUsersInChat(chatUsers.length);
+  }, [chatUsers])
 
   const onMessageHandler = useCallback((messageObject) => {
     switch(messageObject.message) {
@@ -25,18 +30,17 @@ export const ChatModule = ({ client }) => {
       
       case 'lm319':
         //updUsersList(messageObject.users);
-        users.current = messageObject.users;
-        setUsersInChat(users.current.length);
+        setChatUsers(messageObject.users);
         break;
 
       default:
-        const sender = users.current.find(user => user.userID === messageObject.userID);
+        const sender = chatUsers.find(user => user.userID === messageObject.userID);
         console.log(messageObject.userID, sender);
         setMessages(m => {
           return [...m, { userID: messageObject.userID, message: messageObject.message, messID: messageObject.messID, name:sender.name, photo:sender.photo }];
          });
     }
-  }, [users, setUsersInChat]);
+  }, [chatUsers, setUsersInChat]);
 
   useEffect(() => {
     client.onmessage = (message) => {
