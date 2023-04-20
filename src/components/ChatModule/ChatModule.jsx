@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useUser } from 'firebase-func';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
@@ -15,12 +15,11 @@ export const ChatModule = ({ client }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [chatUsers, setChatUsers] = useState([]);
-  const users = useRef([])
 
   useEffect(() => {
     console.log(chatUsers);
     setUsersInChat(chatUsers.length);
-  }, [chatUsers])
+  }, [chatUsers, setUsersInChat])
 
   const onMessageHandler = useCallback((messageObject) => {
     switch(messageObject.message) {
@@ -40,7 +39,7 @@ export const ChatModule = ({ client }) => {
           return [...m, { userID: messageObject.userID, message: messageObject.message, messID: messageObject.messID, name:sender.name, photo:sender.photo }];
          });
     }
-  }, [chatUsers, setUsersInChat]);
+  }, [chatUsers]);
 
   useEffect(() => {
     client.onmessage = (message) => {
