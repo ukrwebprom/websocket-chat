@@ -36,7 +36,7 @@ export const ChatModule = ({ client }) => {
           return [...m, { userID: messageObject.userID, message: messageObject.message, messID: messageObject.messID, name:sender.name, photo:sender.photo }];
          });
     }
-  }, [users]);
+  }, [users, setUsersInChat]);
 
   useEffect(() => {
     client.onmessage = (message) => {
@@ -45,9 +45,6 @@ export const ChatModule = ({ client }) => {
     }
   }, [onMessageHandler, client])
 
-  useEffect(() => {
-    setUsersInChat(users.length);
-  }, [users, setUsersInChat])
 
   const SendData = message => {
     const data = {
