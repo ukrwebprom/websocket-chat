@@ -24,7 +24,7 @@ export const SocketProvider = ({ children }) => {
     const [chatID, setChatID] = useState(() => '');
     const [client, setClient] = useState(() => null);
     const [isConnected, setIsConnected] = useState(false);
-    const [chatUsers, setChatUsers] = useState(() => []);
+    const [chatUsers, setChatUsers] = useState([]);
     const [Message, setMessage] = useState('');
 
     const makeChat = async (ID) => {
@@ -37,11 +37,21 @@ export const SocketProvider = ({ children }) => {
         
     }
 
-    const getChat = async (chekID) => {
-        console.log('this is fucking get chat:', chekID);
+    const getUsers = async (ID) => {
         try {
-            const res = await ax.get('/chat', {params:{id:chekID}})
+            const res = await ax.get('/chat/users', {params:{id:ID}})
             if(res.data) setChatUsers(res.data)
+            return (res.data);
+        } catch (err) {
+            throw new Error(err);
+        }
+    }
+
+    const getChat = async (ID) => {
+        console.log('this is fucking get chat:', ID);
+        try {
+            const res = await ax.get('/chat', {params:{id:ID}})
+            console.log(res.data);
             return (res.data);
         } catch (err) {
             throw new Error(err);
@@ -55,10 +65,6 @@ export const SocketProvider = ({ children }) => {
     const Send = (m) => {
         client.send(JSON.stringify({mess:m, name:user.name, photo:user.photo}));
     }
-
-    useEffect(() => {
-        if(chatUsers.length > 0) console.log("chat users:", chatUsers);
-    }, [chatUsers])
     
     useEffect(() => {
         const toChat = (ID) => {
@@ -72,7 +78,7 @@ export const SocketProvider = ({ children }) => {
     }, [chatID, Hash, user, client])
 
     useEffect(() => {
-            if(Message === 'need_upd') getChat(chatID);
+            if(Message === 'need_upd') getUsers(chatID);
     }, [Message, chatID])
 
     useEffect(() => {
@@ -93,7 +99,7 @@ export const SocketProvider = ({ children }) => {
 
     return (
         <socketContext.Provider
-          value={{ Send, Message, isConnected, chatUsers, makeChat, getChat, enterChat, chatID}}>
+          value={{ Send, Message, isConnected, makeChat, getChat, enterChat, chatID, chatUsers}}>
           {children}
         </socketContext.Provider>
     );

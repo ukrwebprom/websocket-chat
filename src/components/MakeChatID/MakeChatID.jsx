@@ -21,16 +21,13 @@ export const MakeChatID = ({startChat}) => {
     useEffect(() => {
         if(inputvalue.length === 4 || inputvalue.length === 9 ) setInputValue(i => i+"-");
         if(inputvalue.length !== 14) {setIsValidChat(false);}
-        else {
-            getChat(inputvalue).then((feedback) => {
-                setIsValidChat(feedback !== "")}).catch((e) => console.log(e));
-        }
+        else getChat(inputvalue).then((feedback) => {
+            setIsValidChat(feedback)}).catch((e) => console.log(e));
     }, [inputvalue, getChat])
     
     const createNewChat = async () => {
         const id = [nanoid(), nanoid(), nanoid()].join("-");
         const res = await makeChat(id);
-        console.log(res);
         setInputValue(res);
     }
 

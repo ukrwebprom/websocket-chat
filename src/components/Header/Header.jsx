@@ -24,7 +24,6 @@ export const Header = () => {
   const { user, LogOut, UpdateChatName  } = useUser();
   const {chatID, isConnected, chatUsers} = useWebSocket();
   const userNum = Object.keys(chatUsers).length;
-/*   const { chatUsers } = useWebSocket(); */
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -61,12 +60,18 @@ const handleChangeChatName = e => {
     <AppBar position="fixed" color="clear" sx={{boxShadow:'none'}}>
       <Container maxWidth="xl">
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
-      {user !== null && (<div className="userdata">
-      {userNum  > 0 && <Badge badgeContent={userNum} color="primary">
-        <PersonIcon color="action" />
-      </Badge>}
-      {isConnected? <p>Connected: {chatID}</p> : <p>Disconnected</p>}
-      </div>)}
+      {user !== null && (
+        <div className="userdata">
+
+          {chatID !=='' && 
+          <>
+          <Badge badgeContent={userNum} color="primary">
+            <PersonIcon color="action" />
+          </Badge>
+          {isConnected? <p>Connected: {chatID}</p> : <p>Disconnected</p>}
+          </>
+          }
+        </div>)}
 
       <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}></Box>
       {user && <MenuIcon onClick={handleClick} size={20} color='#339955' className='menuicon'/> }
