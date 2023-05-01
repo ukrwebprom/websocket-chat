@@ -1,16 +1,11 @@
 import { useUser } from 'firebase-func';
 import { useWebSocket } from 'server-api';
 import { useState } from 'react';
-import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
-import { Link } from 'react-router-dom';
-import Logo from '../../imgs/logo.png'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

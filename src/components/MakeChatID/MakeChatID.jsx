@@ -1,19 +1,16 @@
-import { Button, Input, InputAdornment, TextField } from '@mui/material';
+import { Button, Input, InputAdornment } from '@mui/material';
 import { RxCopy } from 'react-icons/rx';
 import { useCopyToClipboard } from 'usehooks-ts'
 import { customAlphabet } from 'nanoid';
 import './makechatid.scss';
-import { TbMessages } from 'react-icons/tb';
 import { useEffect, useState } from 'react';
 import { Description } from 'components/Utils/Utils';
-import { useUser } from 'firebase-func';
 import { useWebSocket } from 'server-api';
 
 
 
 
 export const MakeChatID = ({startChat}) => {
-    const {isChatExict, createChat} = useUser();
     const {makeChat, getChat} = useWebSocket();
     const nanoid = customAlphabet('1234567890abcdef', 4);
     const [inputvalue, setInputValue] = useState('');
@@ -28,7 +25,7 @@ export const MakeChatID = ({startChat}) => {
             getChat(inputvalue).then((feedback) => {
                 setIsValidChat(feedback !== "")}).catch((e) => console.log(e));
         }
-    }, [inputvalue])
+    }, [inputvalue, getChat])
     
     const createNewChat = async () => {
         const id = [nanoid(), nanoid(), nanoid()].join("-");
@@ -40,7 +37,9 @@ export const MakeChatID = ({startChat}) => {
     const handleEnterChat = () => {
         startChat(inputvalue);
     }
-
+    useEffect(() => {
+        if(value !== '') console.log(value);
+    }, [value])
     return (
         <div className='make-module'>
             <Description>You can join the chat if you know the chat ID.<br />Enter a chat ID or create a new chat and share the ID with other participants.</Description>
