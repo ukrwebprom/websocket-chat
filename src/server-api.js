@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import axios from 'axios';
 /* axios.defaults.baseURL = 'http://tranquil-reaches-58824.herokuapp.com:8000'; */
 const ax = axios.create({
-    baseURL:'http://tranquil-reaches-58824.herokuapp.com',
+    baseURL:'https://tranquil-reaches-58824.herokuapp.com',
   });
 
 const socketContext = createContext();
