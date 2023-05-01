@@ -77,7 +77,7 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         const connect = () => {
-        const socketUrl = `ws://tranquil-reaches-58824.herokuapp.com/?Hash=${Hash}`;
+        const socketUrl = `wss://tranquil-reaches-58824.herokuapp.com/?Hash=${Hash}`;
         const clientUnit = new w3cwebsocket(socketUrl);
         setClient(clientUnit);
         clientUnit.onopen = () => setIsConnected(true);
