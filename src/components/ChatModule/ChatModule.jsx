@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useUser } from 'firebase-func';
+import { useState, useEffect, useMemo } from 'react';
+import { useWebSocket } from 'server-api';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -8,61 +8,24 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import './chatmodule.scss';
+import { nanoid } from 'nanoid';
 
 
-export const ChatModule = ({ client }) => {
-  const { user, setUsersInChat } = useUser();
+export const ChatModule = () => {
+  const { Message, Send } = useWebSocket();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const [chatUsers, setChatUsers] = useState([]);
+  const dontShow = useMemo(() => ['', 'ping', 'need_upd'], []);
 
   useEffect(() => {
-    console.log(chatUsers);
-    setUsersInChat(chatUsers.length);
-  }, [chatUsers, setUsersInChat])
-
-  const onMessageHandler = useCallback((messageObject) => {
-    switch(messageObject.message) {
-      case 'ping':
-        console.log('ping');
-        break;
-      
-      case 'lm319':
-        //updUsersList(messageObject.users);
-        setChatUsers(messageObject.users);
-        break;
-
-      default:
-        const sender = chatUsers.find(user => user.userID === messageObject.userID);
-        console.log(messageObject.userID, sender);
-        setMessages(m => {
-          return [...m, { userID: messageObject.userID, message: messageObject.message, messID: messageObject.messID, name:sender.name, photo:sender.photo }];
-         });
-    }
-  }, [chatUsers]);
-
-  useEffect(() => {
-    client.onmessage = (message) => {
-      const data = JSON.parse(message.data);
-      onMessageHandler(data);
-    }
-  }, [onMessageHandler, client])
-
-
-  const SendData = message => {
-    const data = {
-      message,
-      userID: user.userID,
-    };
-    client.send(JSON.stringify(data));
-  };
-
+    if(!dontShow.includes(Message)) setMessages(m => [...m, { message:Message.mess, messID:nanoid(), name:Message.name, photo:Message.photo }])
+  }, [Message, dontShow])
 
   const handleType = e => {
     setNewMessage(e.target.value);
   };
   const handleOnSend = () => {
-    SendData(newMessage);
+    Send(newMessage);
     setNewMessage('');
   };
 

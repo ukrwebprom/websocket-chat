@@ -1,0 +1,38 @@
+.make-module {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.make-module-btn {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  flex-grow: 0;
+}
+.make-module-btn:hover {
+  color: #0971f1;
+}
+
+.make-module-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px auto 50px auto;
+}
+@media screen and (min-width: 900px) {
+  .make-module-form {
+    flex-direction: row;
+  }
+}
+
+.code-line-btn {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}/*# sourceMappingURL=makechatid.css.map */

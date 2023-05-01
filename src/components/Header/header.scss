@@ -13,3 +13,10 @@
     align-items: center;
     gap:20px;
 }
+.menuicon {
+    cursor: pointer;
+    color:black;
+    &:hover {
+        color:#0089D6;
+    }
+}

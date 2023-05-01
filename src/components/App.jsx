@@ -1,7 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Layout } from "routes/Layout";
 import { Mainpage } from "routes/Mainpage";
-import { Chat } from "routes/Chat";
+import { ChatModule } from "./ChatModule/ChatModule";
 import { useUser } from 'firebase-func';
 import './app.scss';
 
@@ -9,16 +9,15 @@ import './app.scss';
 
 export const App = () => {
   const { user } = useUser();
-  return (
-      <Routes>
-        <Route path="/" element={<Layout />} >
-          <Route index element={<Mainpage />} />
-          
-          {user? <Route path=":chatID" element={<Chat />} /> :
-          <Route path=":chatID" element={<Mainpage />} />}
-        </Route>
+  const [isChat, setIsChat] = useState(false);
 
-        
-      </Routes>
+  useEffect(() => {
+    if(user === null) setIsChat(false);
+  }, [user])
+
+  return (
+      <Layout>
+        {isChat? <ChatModule /> : <Mainpage start={setIsChat}/>}
+      </Layout>
   );
 };

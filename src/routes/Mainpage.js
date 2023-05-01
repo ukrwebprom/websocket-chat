@@ -1,37 +1,32 @@
-import { Button } from '@mui/material';
-import { ReactComponent as MainImg } from 'main-img.svg';
-import { useUser } from 'firebase-func';
 import { Container } from '@mui/material';
-import { nanoid } from 'nanoid';
-import { useNavigate } from "react-router-dom";
+import { useUser } from 'firebase-func';
+import { useWebSocket } from 'server-api';
+import { MakeChatID } from 'components/MakeChatID/MakeChatID';
+import { Title } from 'components/Title/Title';
+import { Login } from 'components/Login/Login';
+import { CenterPage } from 'components/Utils/Utils';
 
-export const Mainpage = () => {
+export const Mainpage = ({start}) => {
   const { user } = useUser();
-  const navigate = useNavigate();
+  const {enterChat} = useWebSocket();
 
-  const createChat = () => {
-    navigate(`/${nanoid()}`);
+  const onEnterChat = (id) => {
+    enterChat(id);
+    start(true);
   }
+
   return (
-    <div className="centerpage">
+    <CenterPage>
     <Container fixed>
-      <div className="mainpageblock">
-        <MainImg />
-        <div className='mainpageblock__content'>
-          <h1>the Chat</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</p>
+
+        <Title />
           {user? 
-          <Button variant="outlined" onClick={createChat}>Create a chat room</Button> :
-          <ul>
-            <li>Log In with your Google account</li>
-            <li>Create a chat room</li>
-            <li>Share the link withe other</li>
-          </ul>
+            <MakeChatID startChat={onEnterChat}/>
+           :
+          <Login />
           }
-        </div>
         
-      </div>
     </Container>
-    </div>
+    </CenterPage>
   );
 };

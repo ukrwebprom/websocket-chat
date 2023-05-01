@@ -1,4 +1,5 @@
 import { useUser } from 'firebase-func';
+import { useWebSocket } from 'server-api';
 import { useState } from 'react';
 import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
@@ -20,11 +21,15 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Badge from '@mui/material/Badge';
 import PersonIcon from '@mui/icons-material/Person';
+import { ReactComponent as MenuIcon } from '../../imgs/menu.svg';
 
 import './header.scss';
 
 export const Header = () => {
-  const { user, LogIn, LogOut, UpdateChatName, usersInChat } = useUser();
+  const { user, LogOut, UpdateChatName  } = useUser();
+  const {chatID, isConnected, chatUsers} = useWebSocket();
+  const userNum = Object.keys(chatUsers).length;
+/*   const { chatUsers } = useWebSocket(); */
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -58,35 +63,18 @@ const handleChangeChatName = e => {
 }
   return (
     <>
-    <AppBar position="fixed" color="clear">
+    <AppBar position="fixed" color="clear" sx={{boxShadow:'none'}}>
       <Container maxWidth="xl">
       <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
-      <div className="userdata">
-      <Link to="/"><img src={Logo} width="50px" alt="the chat logo"/></Link>
-      {usersInChat > 0 && <Badge badgeContent={usersInChat} color="primary">
+      {user !== null && (<div className="userdata">
+      {userNum  > 0 && <Badge badgeContent={userNum} color="primary">
         <PersonIcon color="action" />
       </Badge>}
-      </div>
+      {isConnected? <p>Connected: {chatID}</p> : <p>Disconnected</p>}
+      </div>)}
 
-<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}></Box>
-      {user ? (
-            
-
-            <Tooltip title="Open settings">
-            <IconButton onClick={handleClick} sx={{ p: 0 }}>
-              <Avatar alt={user.name} src={user.photo} />
-            </IconButton>
-            </Tooltip>
-            
-          ) : (
-            <Button
-              variant="outlined"
-              onClick={() => LogIn()}
-              sx={{ boxSizing: 'content-box', height: '34px' }}
-            >
-              Login
-            </Button>
-          )}
+      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}></Box>
+      {user && <MenuIcon onClick={handleClick} size={20} color='#339955' className='menuicon'/> }
       </Toolbar>
       </Container>
     </AppBar>

@@ -1,0 +1,16 @@
+.code-line {
+    display:flex;
+    gap:10px;
+    align-items: center;
+}
+.code-line-text{
+        font-weight: 400;
+        font-size:18px;
+}
+.code-line-btn {
+    padding:0;
+    margin:0;
+    background-color: transparent;
+    border:0;
+    cursor:pointer;
+}

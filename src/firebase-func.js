@@ -1,8 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChanged} from "firebase/auth";
-import {doc, getDoc, setDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import {getFirestore, doc, getDoc, setDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { nanoid } from 'nanoid'
 
 const firebaseConfig = {
@@ -27,7 +26,6 @@ export const useUser = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [uid, setUID] = useState(null);
-    const [usersInChat, setUsersInChat] = useState(0);
 
     useEffect(() => {
       console.log('uid ', uid)
@@ -47,6 +45,7 @@ export const UserProvider = ({ children }) => {
 
     }, [uid])
 
+
     const initUser = async ({uid, name, photo}) => {
       const docRef = doc(db, "users", uid);
       const userDB = await getDoc(docRef);
@@ -57,7 +56,8 @@ export const UserProvider = ({ children }) => {
         setUID(uid);
       }
     }
-    
+
+
     onAuthStateChanged(auth, (authUser) => {
           if (authUser !== null) {
           initUser({uid:authUser.uid, name:authUser.displayName, photo:authUser.photoURL});
@@ -78,15 +78,17 @@ export const UserProvider = ({ children }) => {
             console.log(err);
         }
     }
+
     const UpdateChatName = async (newname) => {
       const docRef = doc(db, "users", user.uid);
       await updateDoc(docRef, {
         name: newname
       });
     }
+
     return (
         <UserContext.Provider
-          value={{ user, LogIn, LogOut, UpdateChatName, usersInChat, setUsersInChat }}>
+          value={{ user, LogIn, LogOut, UpdateChatName}}>{/*  //, setChatId, chat, chatUsers  */}
           {children}
         </UserContext.Provider>
     );

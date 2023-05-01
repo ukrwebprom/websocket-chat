@@ -1,0 +1,33 @@
+.make-module {
+    display:flex;
+    gap:10px;
+    align-items: center;
+    flex-direction: column;
+}
+.make-module-btn {
+    padding:0;
+    margin:0;
+    background-color: transparent;
+    border:0;
+    cursor:pointer;
+    flex-grow:0;
+    &:hover {
+        color:#0971f1;
+    }
+}
+.make-module-form {
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+    @media screen and (min-width:900px) {
+        flex-direction: row;
+    }
+    margin: 30px auto 50px auto;
+}
+.code-line-btn {
+    padding:0;
+    margin:0;
+    background-color: transparent;
+    border:0;
+    cursor:pointer;
+}

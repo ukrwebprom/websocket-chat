@@ -12,4 +12,12 @@
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.menuicon {
+  cursor: pointer;
+  color: black;
+}
+.menuicon:hover {
+  color: #0089D6;
 }/*# sourceMappingURL=header.css.map */
