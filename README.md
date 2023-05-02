@@ -11,6 +11,8 @@ WebSocket Chat does not create user accounts. Instead, the chat uses Google Auth
 
 WebSocket Chat does not have a common space for all participants. Instead, you can create a chat room and invite other members to it. Each room has an ID. When you create a room, you get an ID that you need to share with other meeting participants.
 
+To enter an already existing chat you just need to enter the chat ID in the input field. If the chat still exists, ENTER THE CHAT button gets enabled and you will be able to connect to the chat.
+
 ![Creating repo from a template step 2](./assets/template-step-2.png)
 
 После того как репозиторий будет создан, необходимо перейти в настройки
