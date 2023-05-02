@@ -5,9 +5,7 @@ This is a front-end part of the chat. Back-end is [here](https://github.com/ukrw
 
 ## How it works
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+WebSocket Chat does not create user accounts. Instead, Chat uses Google Account authentication, so you'll need to Log In first.
 
 ![Enter chat](./assets/mainpage.png)
 
