@@ -13,9 +13,13 @@ WebSocket Chat does not have a common space for all participants. Instead, you c
 
 To enter an already existing chat you just need to enter the chat ID in the input field. If the chat still exists, ENTER THE CHAT button gets enabled and you will be able to connect to the chat.
 
+## Back end
+
+The backend lives on the Heroku server and includes both Http and Websocket servers. The Websocket server is used to receive and send messages to all users participating in the chat. The Http server provides endpoints for creating a new chat, checking the status of a chat, getting a list of participants, adding and removing chat users.
+
 ## Used technologies and libraries
 
-**Front end** - React, sass, Firebase, Material UI
+**Front end** - React, sass, Firebase, Axios, Material UI
 **Back end** - Node js, WS, Express
 
 ```json
