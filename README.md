@@ -5,13 +5,11 @@ This is a front-end part of the chat. Back-end is [here](https://github.com/ukrw
 
 ## How it works
 
-WebSocket Chat does not create user accounts. Instead, Chat uses Google Account authentication, so you'll need to Log In first.
+WebSocket Chat does not create user accounts. Instead, the chat uses Google Authentication, so you'll need to Log In first.
 
 ![Enter chat](./assets/mainpage.png)
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+WebSocket Chat does not have a common space for all participants. Instead, you can create a chat room and invite other members to it. Each room has an ID. When you create a room, you get an ID that you need to share with other meeting participants.
 
 ![Creating repo from a template step 2](./assets/template-step-2.png)
 
