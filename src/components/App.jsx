@@ -1,7 +1,7 @@
 import { Layout } from "routes/Layout";
 import { Mainpage } from "routes/Mainpage";
 import { ChatModule } from "./ChatModule/ChatModule";
-import { useUser } from 'firebase-func';
+/* import { useUser } from 'firebase-func'; */
 import { useWebSocket } from 'server-api';
 import './app.scss';
 
