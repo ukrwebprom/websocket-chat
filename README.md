@@ -9,7 +9,7 @@ This is a front-end part of the chat. Back-end is [here](https://github.com/ukrw
 своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
 `«Create a new repository»`, как показано на изображении.
 
-![Enter chat](./assets/mainpage.jpg)
+![Enter chat](./assets/mainpage.png)
 
 На следующем шаге откроется страница создания нового репозитория. Заполни поле
 его имени, убедись что репозиторий публичный, после чего нажми кнопку
