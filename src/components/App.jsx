@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Layout } from "routes/Layout";
 import { Mainpage } from "routes/Mainpage";
 import { ChatModule } from "./ChatModule/ChatModule";
@@ -9,7 +8,7 @@ import './app.scss';
 
 
 export const App = () => {
-  const { user } = useUser();
+/*   const { user } = useUser(); */
   const {chatID} = useWebSocket();
 
 
