@@ -1,18 +1,15 @@
 # WEBSOCKET CHAT
 
 Simple chat made for fun and practice.
-This is a front-end part of chat. Back-end is [here](https://github.com/ukrwebprom/websocket-chat-server)
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+This is a front-end part of the chat. Back-end is [here](https://github.com/ukrwebprom/websocket-chat-server)
 
-## Создание репозитория по шаблону
+## How it works
 
 Используй этот репозиторий организации GoIT как шаблон для создания репозитория
 своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
 `«Create a new repository»`, как показано на изображении.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+![Enter chat](./assets/mainpage.jpg)
 
 На следующем шаге откроется страница создания нового репозитория. Заполни поле
 его имени, убедись что репозиторий публичный, после чего нажми кнопку
