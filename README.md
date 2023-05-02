@@ -23,6 +23,8 @@ The backend lives on the Heroku server and includes both Http and Websocket serv
 **Back end** - Node js, WS, Express
 
 
-### Have a nice chat
+## Have a nice chat
 
 Any comments or suggestions: ukrwebprom@gmail.com or [Y_Pochtiennykh](https://t.me/Y_Pochtiennykh)
+
+P.S. Play our games [Gameboat](https://play.google.com/store/apps/dev?id=8963674542756618187)
