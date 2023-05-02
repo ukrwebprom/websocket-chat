@@ -1,6 +1,7 @@
-# React homework template
+# WEBSOCKET CHAT
 
-Этот проект был создан при помощи
+Simple chat made for fun and practice.
+This is a front-end part of chat. Back-end is [here](https://github.com/ukrwebprom/websocket-chat-server)
 [Create React App](https://github.com/facebook/create-react-app). Для знакомства
 и настройки дополнительных возможностей
 [обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
