@@ -100,8 +100,7 @@ const handleChangeChatName = e => {
         <DialogTitle>Set chat name</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            By default, the Google profile name is used. The chat name can be changed at any time and this will not affect the name in your Google account.
           </DialogContentText>
           <TextField
             autoFocus
