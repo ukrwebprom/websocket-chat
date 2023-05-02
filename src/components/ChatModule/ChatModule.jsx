@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useWebSocket } from 'server-api';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
@@ -16,10 +16,21 @@ export const ChatModule = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const dontShow = useMemo(() => ['', 'ping', 'need_upd'], []);
+  const dialogue = useRef();
 
   useEffect(() => {
     if(!dontShow.includes(Message)) setMessages(m => [...m, { message:Message.mess, messID:nanoid(), name:Message.name, photo:Message.photo }])
   }, [Message, dontShow])
+
+  useEffect(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+/*     console.log(dialogue.current.scrollHeight-window.height);
+    dialogue.current.scrollTop = dialogue.current.scrollHeight; */
+  }, [messages])
 
   const handleType = e => {
     setNewMessage(e.target.value);
@@ -31,9 +42,9 @@ export const ChatModule = () => {
 
   return (
     <>
-      <div className="dialogue">
+      <div className="dialogue" ref={dialogue}>
         <List sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
-          {messages.map(({ userID, message, messID, name, photo }) => (
+          {messages.map(({ message, messID, name, photo }) => (
             <ListItem alignItems="flex-start" key={messID}>
               <ListItemAvatar>
                 <Avatar alt={name} src={photo} />

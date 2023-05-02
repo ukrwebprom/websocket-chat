@@ -22,7 +22,7 @@ import './header.scss';
 
 export const Header = () => {
   const { user, LogOut, UpdateChatName  } = useUser();
-  const {chatID, isConnected, chatUsers} = useWebSocket();
+  const {chatID, isConnected, chatUsers, leaveChat} = useWebSocket();
   const userNum = Object.keys(chatUsers).length;
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -47,6 +47,10 @@ export const Header = () => {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+  const handleLeaveChat = () => {
+    setAnchorEl(null);
+    leaveChat(chatID);
+  }
 const handleSubmit = () => {
   if(newChatName !== '') UpdateChatName(newChatName);
   setOpenDialog(false);
@@ -55,11 +59,12 @@ const handleSubmit = () => {
 const handleChangeChatName = e => {
   setNewChatName(e.target.value);
 }
+
   return (
     <>
     <AppBar position="fixed" color="clear" sx={{boxShadow:'none'}}>
       <Container maxWidth="xl">
-      <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
+      <Toolbar disableGutters sx={{justifyContent:'space-between', alignItems:'center'}}>
       {user !== null && (
         <div className="userdata">
 
@@ -68,7 +73,7 @@ const handleChangeChatName = e => {
           <Badge badgeContent={userNum} color="primary">
             <PersonIcon color="action" />
           </Badge>
-          {isConnected? <p>Connected: {chatID}</p> : <p>Disconnected</p>}
+          {isConnected? <p>Chat ID: <span className='chatid'>{chatID}</span></p> : <p>Disconnected</p>}
           </>
           }
         </div>)}
@@ -87,6 +92,7 @@ const handleChangeChatName = e => {
       'aria-labelledby': 'basic-button',
     }}
   >
+    {chatID !=='' && <MenuItem onClick={handleLeaveChat}>Leave chat</MenuItem>}
     <MenuItem onClick={handleChatName}>Set chat name</MenuItem>
     <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>

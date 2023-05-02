@@ -12,7 +12,7 @@ export const Mainpage = ({start}) => {
 
   const onEnterChat = (id) => {
     enterChat(id);
-    start(true);
+    /* start(true); */
   }
 
   return (

@@ -34,7 +34,6 @@ export const SocketProvider = ({ children }) => {
         } catch (err) {
             throw new Error(err);
         }
-        
     }
 
     const getUsers = async (ID) => {
@@ -60,6 +59,17 @@ export const SocketProvider = ({ children }) => {
 
     const enterChat = async (ID) => {
         setChatID(ID);
+    }
+
+    const leaveChat = async () => {
+        try {
+            const res = ax.delete('/chat/user', {params:{id:chatID, hash:Hash}}).then(() => {
+                setChatID('');
+                client.send(JSON.stringify('need_upd'))});
+            return (res.data);
+        } catch (err) {
+            throw new Error(err);
+        }
     }
 
     const Send = (m) => {
@@ -99,7 +109,7 @@ export const SocketProvider = ({ children }) => {
 
     return (
         <socketContext.Provider
-          value={{ Send, Message, isConnected, makeChat, getChat, enterChat, chatID, chatUsers}}>
+          value={{ Send, Message, isConnected, makeChat, getChat, enterChat, chatID, chatUsers, leaveChat}}>
           {children}
         </socketContext.Provider>
     );
