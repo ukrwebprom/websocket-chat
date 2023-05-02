@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/websocket-chat/static/css/main.930ca928.css",
-    "main.js": "/websocket-chat/static/js/main.789220d8.js",
+    "main.css": "/websocket-chat/static/css/main.602d68a5.css",
+    "main.js": "/websocket-chat/static/js/main.85c498a1.js",
     "static/media/roboto-all-500-normal.woff": "/websocket-chat/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/websocket-chat/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
     "static/media/roboto-all-400-normal.woff": "/websocket-chat/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
@@ -37,11 +37,11 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/websocket-chat/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/websocket-chat/index.html",
     "static/media/menu.svg": "/websocket-chat/static/media/menu.bdf4138d3310bfe64c95845a72822b20.svg",
-    "main.930ca928.css.map": "/websocket-chat/static/css/main.930ca928.css.map",
-    "main.789220d8.js.map": "/websocket-chat/static/js/main.789220d8.js.map"
+    "main.602d68a5.css.map": "/websocket-chat/static/css/main.602d68a5.css.map",
+    "main.85c498a1.js.map": "/websocket-chat/static/js/main.85c498a1.js.map"
   },
   "entrypoints": [
-    "static/css/main.930ca928.css",
-    "static/js/main.789220d8.js"
+    "static/css/main.602d68a5.css",
+    "static/js/main.85c498a1.js"
   ]
 }
